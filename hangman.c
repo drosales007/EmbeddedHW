@@ -2,26 +2,9 @@
 //
 // David Rosales
 // EID: dar542
-// Lab Project 3
+// Lab Project 4
 //
-// A simple program to use as an alarm clock. To start the clock, you must
-// first initialize the time by holding down the left directional pad button.
-// While holding the button, a display lets the user know they are in the
-// set clock mode. The use can press up or down on the directional pad to
-// increase or decrease the time. There is a switch from a.m. to p.m. when
-// you cycle through twelve hours.
-//
-// To set the alarm, you do all of the above but instead hold down the right
-// directional pad button instead of the left.
-//
-// When the time reaches the
-// time set for the alarm, an LED is lit on the board and the alarm noise
-// sounds. The LED and sound are turned off by pressing the Select button
-// on the device.
-//
-// A snooze mode is also implemented where instead of just pressing the
-// select button to turn off the LED, you can hold it for ~1 second. This
-// turns off the LED and sound and increases the alarm time by 5 minutes.
+// The classic Hangman game with two game modes
 //
 //*****************************************************************************
 #include "inc/hw_memmap.h"
@@ -40,9 +23,21 @@
 #include "driverlib/interrupt.h"
 #include "driverlib/systick.h"
 
+
+//*****************************************************************************
+//
+// Initialize functions
+//
+//*****************************************************************************
 extern void drawUnderscore(int x, int y);
 extern void drawPointer(int y);
 
+
+//*****************************************************************************
+//
+// Initialize global variables.
+//
+//*****************************************************************************
 char *alpha[26] = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
 char *selected[26] = {"!","!","!","!","!","!","!","!","!","!","!","!","!","!","!","!","!","!","!","!","!","!","!","!","!","!"};
 char *words[] = {"BOBCAT", "IRONMAN", "FOOTBALL", "CATFISH", "STOMACH", "TEXAS", "LONGHORNS", "CHRISTMAS", "SEAHORSE", "PEANUT"};
@@ -174,6 +169,12 @@ static const unsigned char g_pucBody[] = {0xF0};
 static const unsigned char g_pucLeg1[] = {0xF0};
 static const unsigned char g_pucLeg2[] = {0x0F};
 
+
+//*****************************************************************************
+//
+// Helper Functions
+//
+//*****************************************************************************
 static void drawLogo(void){
 	// Method for displaying the Hangman logo
 	int x0 = (128-72)/2;
